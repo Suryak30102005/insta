@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Audio Downloader</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Instagram Audio Downloader</h1>
+    <form action="/" method="post">
+      <label for="url">Instagram Video URL:</label>
+      <input type="text" id="url" name="url" placeholder="Enter Instagram video URL" required>
+      <button type="submit">Download Audio</button>
+    </form>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+      {% if messages %}
+        <ul class="error">
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
